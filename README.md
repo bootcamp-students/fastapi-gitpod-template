@@ -10,28 +10,16 @@
 ## Command Line
 
 ```bash title="Terminal"
-pip install fastapi "uvicorn[standard]" alembic psycopg pytest requests "python-jose[cryptography]" "passlib[bcrypt]" python-multipart
+pip install "uvicorn[standard]" "python-jose[cryptography]" "passlib[bcrypt]" python-multipart
 pip freeze > requirements.txt
-sudo apt update
-sudo apt upgrade
-sudo apt install postgresql postgresql-contrib
 uvicorn main:app --reload
-createdb fastapi-db
-psql fastapi-db
-alembic init alembic
-alembic revision -m "create users table"
-alembic revision -m "create roles table"
-alembic revision -m "create users_to_roles table"
-alembic revision -m "create todos table"
-alembic upgrade head
-alembic downgrade -1
 ```
 
 ## Configuration
 
 ```txt title=".env.example"
 DATABASE_HOST=localhost
-DATABASE_NAME=fastapi-db
+DATABASE_NAME=postgres
 DATABASE_USER=postgres
 DATABASE_PASSWORD=
 DATABASE_PORT=5432
